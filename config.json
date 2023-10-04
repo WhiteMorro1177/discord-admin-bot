@@ -1,0 +1,20 @@
+{
+    "token": "ODk1NzM0ODc4MjQ5ODI4MzYz.GJNjHI.RCQNrXIJPGg7N1tT8hob0gguMeSIwgex4FwrWI",
+    "command_prefix": "/",
+    "server_info": {
+        "users": [],
+        "roles": [],
+        "text-channels": [],
+        "voice-channels": [], 
+        "main-text-channel": null,
+        "registration-channel": null,
+        "main-voice-channel": null
+    },
+    "commands": [
+        "hello", 
+        "help",
+        "kick",
+        "mute",
+        "init"
+    ]
+}
