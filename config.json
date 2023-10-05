@@ -9,12 +9,5 @@
         "main-text-channel": null,
         "registration-channel": null,
         "main-voice-channel": null
-    },
-    "commands": [
-        "hello", 
-        "help",
-        "kick",
-        "mute",
-        "init"
-    ]
+    }
 }
