@@ -1,13 +1,5 @@
 {
-    "token": "<>",
+    "token": "ODk1NzM0ODc4MjQ5ODI4MzYz.GUSW5L.VAaBDg6wZ041G8TN4SFKP_ctJZan0E79EYudwY",
     "command_prefix": "/",
-    "server_info": {
-        "users": [],
-        "roles": [],
-        "text-channels": [],
-        "voice-channels": [], 
-        "main-text-channel": null,
-        "registration-channel": null,
-        "main-voice-channel": null
-    }
+    "guild_id": 629317885491412999
 }

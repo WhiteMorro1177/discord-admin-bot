@@ -1,0 +1,10 @@
+{
+    "users_ids": [],
+    "roles_ids": [],
+    "text_channels_ids": [],
+    "voice_channels_ids": [], 
+    "main_text_channel_id": 0,
+    "registration_channel_id": 0,
+    "main_voice_channel_id": 0,
+    "temp_voices_ids": []
+}
