@@ -34,7 +34,7 @@ client.once(Events.ClientReady, client => {
     _server_info.voice_channels_ids = client.channels.cache.filter(channel => channel.type === 2).map(channel => channel.id);
     
     console.log(_server_info);
-	console.log(`${client.user.tag}, locked and loaded! Type '${_config.command_prefix}init' to start initialization`);
+	console.log(`${client.user.tag}, locked and loaded! Type '/init' to start initialization`);
 });
 
 // message handling
@@ -45,7 +45,7 @@ client.on(Events.MessageCreate, message => {
   	// payload
 
 	// command handling
-	if (message.content.startsWith(_config.command_prefix)) { // if "message" is a command...
+	if (message.content.startsWith("/")) { // if "message" is a command...
 		
 	}
 	// logging messages
