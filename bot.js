@@ -1,9 +1,10 @@
 'use strict';
 
 // imports
-const { Client, Events, IntentsBitField, ChannelType } = require("discord.js");
-const _config = require("./config.json");
+const { Client, Events, IntentsBitField } = require("discord.js");
 const _server_info = require("./server_info.json");
+
+require("dotenv").config();
 
 // bot configuration
 const intents = [
@@ -14,8 +15,6 @@ const intents = [
     IntentsBitField.Flags.GuildVoiceStates,
 ]
 
-// const slash_hello = new SlashCommandBuilder().setName("hello");
-// const url = "https://discord.com/api/v10/applications/895734878249828363/commands";
 
 const client = new Client({ intents: intents});
 
@@ -141,4 +140,4 @@ client.on(Events.GuildRoleCreate, role => {
 
 });
 
-client.login(_config.token);
+client.login(process.argv.at(2));

@@ -4,7 +4,7 @@
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Test command\"",
+    "test": "node bot.js ODk1NzM0ODc4MjQ5ODI4MzYz.GrtJLu.XMA35cZdNyNGmd5nCGKI6Y9CkQs46AcfAZ7e4E",
     "run": "node bot.js"
   },
   "author": "",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@discordjs/voice": "^0.16.0",
     "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1",
     "eslint": "^8.50.0",
     "request": "^2.88.2"
   }
