@@ -4,8 +4,7 @@
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "test": "node bot.js ODk1NzM0ODc4MjQ5ODI4MzYz.GrtJLu.XMA35cZdNyNGmd5nCGKI6Y9CkQs46AcfAZ7e4E",
-    "run": "node bot.js"
+    "test": "node bot.js"
   },
   "author": "",
   "license": "ISC",

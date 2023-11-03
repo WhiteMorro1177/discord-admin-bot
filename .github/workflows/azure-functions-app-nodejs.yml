@@ -32,10 +32,4 @@ jobs:
             popd
 
         - name: "deploy bot"
-          uses: AFewDragons/Discord-Dispatch-Deploy@v1-alpha.2
-          with:
-            applicationId: ${{ secrets.APP_ID }}
-            branchName: master
-            botToken: ${{ secrets.BOT_TOKEN }}
-            configPath: ./config.json
-            buildPath: ./Build/
+          run: "node bot.js ${{ secrets.BOT_TOKEN }}"
