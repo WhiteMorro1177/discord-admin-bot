@@ -16,7 +16,7 @@ const intents = [
 ]
 
 
-const client = new Client({ intents: intents});
+const client = new Client({ intents: intents });
 
 // bot initialization
 client.once(Events.ClientReady, client => {
@@ -70,7 +70,7 @@ client.on(Events.VoiceStateUpdate, (oldState, newState) => {
     const user = newStateChannel?.members.at(0).user;
 
     if (newStateChannel?.id === creationChannel?.id) {
-        const newChannelName = `${user.tag}'s Voice Channel`;
+        const newChannelName = `${user?.tag}'s Voice Channel`;
         const creationChannelCategory = newState.guild.channels.cache.find(channel => channel.id === "629317885935878156");
 
         newState.channel.setName(newChannelName)
@@ -85,6 +85,7 @@ client.on(Events.VoiceStateUpdate, (oldState, newState) => {
             })
             .then(voice => {
                 voice.setPosition(voice.position - 1);
+                _server_info.main_voice_channel_id = voice.id;
                 _server_info.voice_channels_ids.push(voice.id);
             });
         });
@@ -100,8 +101,6 @@ client.on(Events.VoiceStateUpdate, (oldState, newState) => {
             // TODO( rewrite with .splice() )
         }
     }
-
-    console.log("temp voices: " + _server_info.temp_voices_ids);
 });
 
 client.on(Events.ChannelCreate, channel => {
@@ -140,4 +139,4 @@ client.on(Events.GuildRoleCreate, role => {
 
 });
 
-client.login(process.argv.at(2));
+client.login(process.env.TOKEN);
