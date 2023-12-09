@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag discord-admin-bot:$(date +%s)
+      run: docker build . --file Dockerfile --tag discord-admin-bot:latest
 
     - name: Tag image
       run: docker tag discord-admin-bot whitemorro177/discord-admin-bot
