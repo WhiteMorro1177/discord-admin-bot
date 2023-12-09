@@ -15,7 +15,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag whitemorro177/discord-admin-bot:latest
+      run: docker build . --file Dockerfile --tag discord-admin-bot:latest
+
+    - name: Commit image changes
+      run: docker commit discord-admin-bot discord-admin-bot:latest 
+
+    - name: Tag image
+      run: docker tag discord-admin-bot:latest whitemorro177/discord-admin-bot:latest
 
     - name: Push image to DockerHub
-      run: docker push whitemorro177/discord-admin-bot
+      run: docker push whitemorro177/discord-admin-bot:latest
