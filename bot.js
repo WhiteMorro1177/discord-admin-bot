@@ -17,8 +17,6 @@ const {
 const _server_info = require("./server_info.json");
 const _config = require("./config.json");
 
-const OnInit = false;
-
 
 require("dotenv").config();
 
@@ -84,15 +82,15 @@ client.on(Events.MessageCreate, async (message) => {
 	if (message.content.startsWith("/")) { // if "message" is a command...
         if (message.content.startsWith("/init")) {
             
+            const replies = [];
             // check moderator
-            OnInit = true;
             const firstInitMessage = "Starting configuration process...\n\nFirst of all, select functions, which bot will be able to moderate:";
             
             const actionRow = new ActionRowBuilder(); // create ActionRow object - collection for buttons
             const _configAliases = require("./config_aliases"); // link aliases for functions
 
             // set up buttons for every function ever exists
-            for ([key, value] of _configAliases) {
+            for (const [key, value] of _configAliases) {
                 const button = new ButtonBuilder()
                     .setLabel(value)
                     .setStyle(ButtonStyle.Primary)
@@ -102,7 +100,7 @@ client.on(Events.MessageCreate, async (message) => {
             }
 
             // add "exit" button
-            button = new ButtonBuilder()
+            const button = new ButtonBuilder()
                 .setLabel("Next step")
                 .setStyle(ButtonStyle.Success)
                 .setCustomId("exit");
@@ -119,18 +117,29 @@ client.on(Events.MessageCreate, async (message) => {
             });
 
             // add "click" event listener
-            collector.on("collect", interaction => {
+            let choosenFunctionCounter = 0;
+            collector.on("collect", async (interaction) => {
+                interaction.deferUpdate(); // hide "Interaction failed" error
+                
+                // handle "Next step" button click
                 if (interaction.customId === "exit") {
                     message.delete();
+                    reply.delete();
                     return;
                 }
-                
-                message.reply(`You chose ${interaction.customId} option`);
+
+                // handle other buttons clicks
+                choosenFunctionCounter++; // count functions
+
+                actionRow.components.filter(button => button.data.custom_id === interaction.customId).at(0).setDisabled(true);
+                reply.edit({
+                    content: reply.content + `\n${choosenFunctionCounter}: ${interaction.component.label}`,
+                    components: [actionRow]
+                });
+
             });
         }
 	}
-
-
 
 
 	// logging messages
