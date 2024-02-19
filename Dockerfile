@@ -1,7 +1,7 @@
 FROM node:lts-slim
 
 WORKDIR /app
-COPY ./ ./
-RUN npm install discord.js @discordjs/voice
+COPY ./ ./app
+RUN npm i
 
 CMD [ "node", "bot.js" ]
