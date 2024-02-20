@@ -15,7 +15,7 @@ const {
 } = require("discord.js");
 
 const _server_info = require("./server_info.json");
-const _config = require("./config.json");
+const _config = require("./config");
 
 
 require("dotenv").config();
@@ -55,89 +55,14 @@ client.on(Events.MessageCreate, async (message) => {
   	if (message.author.bot) return; // ignore bot messages
   	// if (message.channel.id != _config.server_info["main-text-channel-id"]) return; // ignore all channels except "main"
 	
-    /*
-  	if (OnInit) {
-        // initialize
-        const msg = message.content;
-
-        // bot's base functions
-        const _configAliases = require("./config_aliases");
-        const 
-
-        switch (msg.toLowerCase()) {
-            case "":
-                break;
-
-            case "exit":
-            default:
-                message.reply("Config saved.");
-                OnInit = false;
-                break;
-        }
-        
-    }
-*/
-
 	// command handling
 	if (message.content.startsWith("/")) { // if "message" is a command...
         if (message.content.startsWith("/init")) {
-            
-            const replies = [];
-            // check moderator
-            const firstInitMessage = "Starting configuration process...\n\nFirst of all, select functions, which bot will be able to moderate:";
-            
-            const actionRow = new ActionRowBuilder(); // create ActionRow object - collection for buttons
-            const _configAliases = require("./config_aliases"); // link aliases for functions
 
-            // set up buttons for every function ever exists
-            for (const [key, value] of _configAliases) {
-                const button = new ButtonBuilder()
-                    .setLabel(value)
-                    .setStyle(ButtonStyle.Primary)
-                    .setCustomId(key);
+            // check moderator permissions
 
-                actionRow.addComponents(button);
-            }
-
-            // add "exit" button
-            const button = new ButtonBuilder()
-                .setLabel("Next step")
-                .setStyle(ButtonStyle.Success)
-                .setCustomId("exit");
-            actionRow.addComponents(button);
-
-            const reply = await message.reply({ content: firstInitMessage, components: [actionRow] }); // create message which contatins buttons
-
-            const filter = (interaction) => message.author.id === interaction.user.id; // filter clicks on buttons
-            
-            // create object which will be "collect" buttons clicks
-            const collector = reply.createMessageComponentCollector({
-                componentType: ComponentType.Button,
-                filter
-            });
-
-            // add "click" event listener
-            let choosenFunctionCounter = 0;
-            collector.on("collect", async (interaction) => {
-                interaction.deferUpdate(); // hide "Interaction failed" error
-                
-                // handle "Next step" button click
-                if (interaction.customId === "exit") {
-                    message.delete();
-                    reply.delete();
-                    return;
-                }
-
-                // handle other buttons clicks
-                choosenFunctionCounter++; // count functions
-
-                actionRow.components.filter(button => button.data.custom_id === interaction.customId).at(0).setDisabled(true);
-                reply.edit({
-                    content: reply.content + `\n${choosenFunctionCounter}: ${interaction.component.label}`,
-                    components: [actionRow]
-                });
-
-            });
+            // create init message
+            require("./init")(message);
         }
 	}
 
@@ -159,7 +84,7 @@ client.on(Events.InteractionCreate, interaction => {
 // create temporary voice channels
 client.on(Events.VoiceStateUpdate, (oldState, newState) => {
 
-    if (_config.useVoiceCreation) {
+    if (_config.get("useVoiceCreation")) {
         const creationChannel = client.channels.cache.find(channel => channel.id === _server_info.main_voice_channel_id);
         
         const newStateChannel = newState.channel;
