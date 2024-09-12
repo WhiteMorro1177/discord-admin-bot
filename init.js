@@ -5,8 +5,7 @@ const {
     ComponentType,
 } = require("discord.js");
 
-const _config = require("./config");
-const _configAliases = require("./config_aliases"); // link aliases for functions
+const _configAliases = require("./config/aliases"); // link aliases for functions
 
 // first step of initialization
 const createInitMeassage = async (message) => {
@@ -29,17 +28,20 @@ const createInitMeassage = async (message) => {
     .setLabel("Next step")
     .setStyle(ButtonStyle.Success)
     .setCustomId("exit");
-
+    
     actionRow.addComponents(button);
-
+    
     const reply = await message.reply({ content: firstInitMessage, components: [actionRow] }); // create message which contatins buttons
     const filter = (interaction) => message.author.id === interaction.user.id; // filter clicks on buttons
-
+    
     // create object which will be "collect" buttons clicks
     const collector = reply.createMessageComponentCollector({
         componentType: ComponentType.Button,
         filter
     });
+    
+    // import config file
+    const _serverConfig = require(`./guilds/${message.guild.id}.json`);
 
     // add "click" event listener
     let choosenFunctionCounter = 0;
@@ -63,9 +65,10 @@ const createInitMeassage = async (message) => {
             content: reply.content + `\n${choosenFunctionCounter}: ${interaction.component.label}`,
             components: [actionRow]
         });
+
         // rewrite config file
-        _config.set(interaction.customId, true);
-        console.log(_config);
+        _serverConfig.options[interaction.customId] = true;
+        console.log(_serverConfig);
     });
 }
 
@@ -73,8 +76,13 @@ const showOptionChooser = async (reply, collector) => {
     collector.removeAllListeners();
     const optionChooserReplyContent = "Config saved.\n\nChoose option you would like to configurate next:";
 
+    // import config file
+    const _serverConfig = require(`./guilds/${reply.guild.id}.json`);
+
+    const serverConfigOptions = new Map(Object.entries(JSON.parse(_serverConfig.options)));
+
     const optionChooserActionRow = new ActionRowBuilder();
-    _config.forEach((value, key) => {
+    serverConfigOptions.forEach((value, key) => {
         if (value) {
 
             // create buttons for every enabled function
@@ -85,25 +93,51 @@ const showOptionChooser = async (reply, collector) => {
         
             optionChooserActionRow.addComponents(button);
         }
-    })
+    });
 
     reply.edit({
         content: optionChooserReplyContent,
         components: [optionChooserActionRow]
-    })
+    });
 
     // add "click" event listener
     collector.on("collect", async (interaction) => {
         switch (interaction.customId) {
             case "voiceChannelsCreation":
-                // write configuration method for this
+                if (_serverConfig.main_voice_channel_id == -1) {
+                    // create new voice channel
+                    
+                }
+                else {
+                    // choose existed voice channel for creation
+
+                    const voiceChannelsIds = _serverConfig.voice_channels_ids;
+                    
+                    const replyContent = "";
+                    const actionRow = new ActionRowBuilder();
+                    voiceChannelsIds.forEach(id => {
+                        
+                        // create buttons for every voice channel
+                        const voiceChannelName = interaction.guild.channels.cache.filter(channel => channel.id == id);
+                        const button = new ButtonBuilder()
+                            .setLabel(voiceChannelName)
+                            .setStyle(ButtonStyle.Primary)
+                            .setCustomId(id);
+                            
+                            actionRow.addComponents(button);
+                    });
+                    
+                    reply.edit({
+                        content: replyContent,
+                        components: [actionRow]
+                    });
+                }   
                 break;
             case "roleSystem":
                 reply.edit({
                     content: "Config saved.\n\nThis function has not configuration method\n\nChoose option you would like to configurate next:"
                 });
                 break;
-
             default: return;
         }
     });
