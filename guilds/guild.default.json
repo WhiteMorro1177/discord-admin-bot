@@ -1,0 +1,17 @@
+{
+    "id": "",
+    "name": "",
+    "users": [], 
+    "registration_channel_id": "",
+    "main_text_channel_id": "",
+    "text_channels_ids": [],
+    "voice_creation_channel_id": "",
+    "voice_channels_ids": [], 
+    "temp_voices_ids": [],
+    "roles_map": {},
+    "reports": [],
+    "options": {
+        "voiceChannelsCreation": false,
+        "roleSystem": false
+    }
+}

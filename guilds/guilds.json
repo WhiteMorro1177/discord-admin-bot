@@ -1,0 +1,177 @@
+[
+  {
+    "id": "1410987398032265360",
+    "name": "ShowCase Server",
+    "users": [
+      {
+        "user_id": "1187108919580037243",
+        "user_roles": [
+          "1411004447345217727",
+          "1411005969407938590",
+          "1411008051908972556"
+        ],
+        "warn_count": 0
+      },
+      {
+        "user_id": "842112089546817577",
+        "user_roles": [
+          "1411008051908972556"
+        ],
+        "warn_count": 0
+      },
+      {
+        "user_id": "426428858426982401",
+        "user_roles": [],
+        "warn_count": 0
+      },
+      {
+        "user_id": "895734878249828363",
+        "user_roles": [
+          "1411008051908972556",
+          "1411440923904180287"
+        ],
+        "warn_count": 0
+      }
+    ],
+    "registration_channel_id": "",
+    "main_text_channel_id": "",
+    "text_channels_ids": [
+      "1410987399994933391",
+      "1410995642569981982",
+      "1410995826293215232",
+      "1410996379844874240"
+    ],
+    "voice_creation_channel_id": "1410996060741959760",
+    "voice_channels_ids": [
+      "1410987399994933392",
+      "1410996060741959760",
+      "1410996274345410590",
+      "1410996319673127085",
+      "1410996350522228869",
+      "1410996460794941551",
+      "1410996501701984369",
+      "1411009957930860544"
+    ],
+    "temp_voices_ids": [],
+    "roles_map": {
+      "admin_role_id": "1411008051908972556",
+      "member_role_id": "1411005969407938590",
+      "guest_role_id": "1411004447345217727"
+    },
+    "reports": [],
+    "options": {
+      "voiceChannelsCreation": true,
+      "roleSystem": true
+    }
+  },
+  {
+    "id": "1283876183246770177",
+    "name": "_ALT__'s server",
+    "users": [
+      {
+        "user_id": "426428858426982401",
+        "user_roles": [],
+        "warn_count": 0
+      },
+      {
+        "user_id": "1042083939562557441",
+        "user_roles": [
+          "1410936368607268927"
+        ],
+        "warn_count": 0
+      }
+    ],
+    "registration_channel_id": "",
+    "main_text_channel_id": "",
+    "text_channels_ids": [
+      "1283876184173707347"
+    ],
+    "voice_creation_channel_id": "1406021033529704518",
+    "voice_channels_ids": [
+      "1283876184173707348",
+      "1406021033529704518"
+    ],
+    "temp_voices_ids": [],
+    "roles_map": {},
+    "reports": [],
+    "options": {
+      "voiceChannelsCreation": true,
+      "roleSystem": false
+    }
+  },
+  {
+    "id": "1474114669726929020",
+    "name": "Pirates of the Black Pearl",
+    "users": [
+      {
+        "user_id": "1187108919580037243",
+        "user_roles": [
+          "1474119238590529647"
+        ],
+        "warn_count": 0
+      },
+      {
+        "user_id": "426428858426982401",
+        "user_roles": [
+          "1474123207710736404"
+        ],
+        "warn_count": 0
+      },
+      {
+        "user_id": "186442540403261440",
+        "user_roles": [
+          "1474139753170600098"
+        ],
+        "warn_count": 0
+      },
+      {
+        "user_id": "815307644154937354",
+        "user_roles": [
+          "1474120663039213609"
+        ],
+        "warn_count": 0
+      },
+      {
+        "user_id": "842112089546817577",
+        "user_roles": [
+          "1474119238590529647"
+        ],
+        "warn_count": 0
+      },
+      {
+        "user_id": "1202308446414962779",
+        "user_roles": [
+          "1474139753170600098"
+        ],
+        "warn_count": 0
+      }
+    ],
+    "registration_channel_id": "",
+    "main_text_channel_id": "",
+    "text_channels_ids": [
+      "1474114670976700490",
+      "1474117005169656140"
+    ],
+    "voice_creation_channel_id": "1475454529402048542",
+    "voice_channels_ids": [
+      "1474114670976700491",
+      "1474115892982972477",
+      "1474115993285562461",
+      "1474703088886747136",
+      "1474703153302605925",
+      "1474703375223361588",
+      "1475454529402048542"
+    ],
+    "temp_voices_ids": [],
+    "roles_map": {
+      "admin_role_id": "1474119238590529647",
+      "member_role_id": "1474139753170600098",
+      "guest_role_id": "1475454027201384540"
+    },
+    "reports": [],
+    "options": {
+      "voiceChannelsCreation": true,
+      "roleSystem": true
+    }
+  }
+]
