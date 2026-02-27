@@ -8,6 +8,7 @@ const {
 } = require("discord.js");
 
 const eventsList = require("./events");
+const { prepareStorage } = require("./guildsRequests.js");
 
 require("dotenv").config();
 
@@ -20,6 +21,8 @@ const intents = [
     IntentsBitField.Flags.GuildVoiceStates,
     IntentsBitField.Flags.GuildPresences
 ];
+
+prepareStorage();
 
 const client = new Client({ intents: intents });
 client.once(Events.ClientReady, async client => {

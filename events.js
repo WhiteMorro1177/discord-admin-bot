@@ -9,7 +9,7 @@ const {
 } = require("discord.js");
 
 const { registerGuildSlashCommands } = require('./registerCommands');
-const { getGuildConfigFile, saveGuildConfig } = require("./guilds_requests.js");
+const { getGuildConfigFile, saveGuildConfig } = require("./guildsRequests.js");
 
 
 var GuildCreateEvent = {
